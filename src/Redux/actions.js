@@ -1,4 +1,4 @@
-import { BUG_ADDED, BUG_REMOVED, RESOLVED } from "./actionTypes";
+import { BUG_ADDED, BUG_REMOVED, RESOLVED, SOMETHING } from "./actionTypes";
 
 export const bugAdded = (description) => ({
   type: BUG_ADDED,
@@ -18,4 +18,8 @@ export const bugResolved = (id) => ({
   payload: {
     id: id,
   },
+});
+export const resetAll = (id) => ({
+  type: SOMETHING
+ 
 });
