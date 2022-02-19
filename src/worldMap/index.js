@@ -1,16 +1,16 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import ReactTooltip from "react-tooltip";
 
 
 import MapChart from "./MapChart.js";
 
 function WorldMap() {
-  const [content, setContent] = useState("");
-
+  const {tooltip, data} = useSelector(state => state);
   return (
     <>
-      <MapChart setTooltipContent={setContent} />
-      <ReactTooltip>{content}</ReactTooltip>
+      <MapChart/>
+      <ReactTooltip>{`${tooltip} - ${data.cases}`}</ReactTooltip>
     </>
   );
 }

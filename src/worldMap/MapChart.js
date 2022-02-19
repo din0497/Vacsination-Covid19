@@ -1,10 +1,13 @@
 import React, { memo, useState } from "react";
+import { useDispatch } from "react-redux";
 import {
   ZoomableGroup,
   ComposableMap,
   Geographies,
   Geography,
 } from "react-simple-maps";
+import { getCountry } from "../api/http";
+import { fetchData, getTooltip } from "../Redux/actions/actions";
 
 const geoUrl =
   "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
@@ -20,7 +23,7 @@ const rounded = (num) => {
 };
 
 const MapChart = ({ setTooltipContent }) => {
-  const [cases, setCases] = useState([]);
+  const dispatch = useDispatch();
   return (
     <>
       <ComposableMap data-tip="" projectionConfig={{ scale: 200 }}>
@@ -33,17 +36,13 @@ const MapChart = ({ setTooltipContent }) => {
                   geography={geo}
                   onMouseEnter={() => {
                     const { NAME, POP_EST } = geo.properties;
-                    fetch(`https://corona.lmao.ninja/v2/countries/${NAME}`)
-                      .then((response) => response.json())
-                      .then((responseData) => {
-                        setCases(responseData);
-                        setTooltipContent(`${NAME} -${responseData.cases}`);
-                        document.getElementById(NAME).scrollIntoView();
-                        // document.getElementById(NAME).style.background =
-                        //   "yellow";
-                      });
-                      // getCountry(NAME)
-                      // setTooltipContent(NAME)
+                    getCountry(NAME, dispatch);
+                    document.getElementById(NAME).scrollIntoView();
+                    dispatch(getTooltip(NAME));
+                    // document.getElementById(NAME).style.background =
+                    //   "yellow";
+                    // getCountry(NAME)
+                    // setTooltipContent(NAME)
                   }}
                   // onMouseLeave={() => {
                   //   const { NAME, POP_EST } = geo.properties;
