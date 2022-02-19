@@ -1,17 +1,16 @@
-import React, { useState } from "react";
-import ReactTooltip from "react-tooltip";
+import React from "react";
 
 import "./App.css";
-
-import MapChart from "./worldMap/MapChart";
-
+import WorldMap from "./worldMap/index";
+import LeftBar from "./components/sidebars/LeftBar";
+import RightBar from "./components/sidebars/RightBar";
 function App() {
-  const [content, setContent] = useState("");
-
   return (
     <div className="App">
-      <MapChart setTooltipContent={setContent} />
-      <ReactTooltip>{content}</ReactTooltip>
+
+      <LeftBar/>
+      <WorldMap />
+      <RightBar/>
     </div>
   );
 }
