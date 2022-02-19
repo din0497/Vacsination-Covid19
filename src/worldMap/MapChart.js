@@ -42,6 +42,8 @@ const MapChart = ({ setTooltipContent }) => {
                         // document.getElementById(NAME).style.background =
                         //   "yellow";
                       });
+                      // getCountry(NAME)
+                      // setTooltipContent(NAME)
                   }}
                   // onMouseLeave={() => {
                   //   const { NAME, POP_EST } = geo.properties;
