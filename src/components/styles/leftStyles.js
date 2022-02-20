@@ -1,8 +1,6 @@
-import React from 'react';
 import styled from 'styled-components';
 
 export const LeftContainer = styled.ul`
-  border: 1px red solid;
   width: 250px;
   margin: 0;
   padding: 0 0 0 15px;

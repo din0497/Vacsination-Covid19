@@ -1,23 +1,21 @@
-import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { fetchData } from "../../Redux/actions/actions";
+import { useEffect} from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { getAll } from "../../api/http";
 import { LeftContainer } from "../styles/leftStyles";
 import Country from "./Country";
 
 const LeftBar = () => {
-  const [data, setData] = useState([]);
   const dispatch = useDispatch();
+  const all = useSelector(state => state.all);
+
   useEffect(() => {
-    fetch(`https://corona.lmao.ninja/v2/countries`)
-      .then((response) => response.json())
-      .then((responseData) => {
-        setData(responseData);
-        dispatch(fetchData(responseData))
-      });
-  }, []);
+    getAll(dispatch)
+  }, [dispatch]);
+
   return (
     <LeftContainer>
-      {data.map((d, i) => (
+      {all.map((d, i) => (
         <Country
           key={i}
           active={d.active}

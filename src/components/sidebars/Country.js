@@ -16,9 +16,6 @@ const Country = (props) => {
       <Property>
         Death: <span style={{color:'orange'}}>{props.death}</span>
       </Property>
-      <Property>
-        Vaccinated: <span style={{color:'orange'}}>2500</span>
-      </Property>
     </CountryList>
   );
 };

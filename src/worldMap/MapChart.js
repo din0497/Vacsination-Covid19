@@ -1,4 +1,4 @@
-import React, { memo, useState } from "react";
+import React, { memo } from "react";
 import { useDispatch } from "react-redux";
 import {
   ZoomableGroup,
@@ -7,7 +7,7 @@ import {
   Geography,
 } from "react-simple-maps";
 import { getCountry } from "../api/http";
-import { fetchData, getTooltip } from "../Redux/actions/actions";
+import { getTooltip } from "../Redux/actions/actions";
 
 const geoUrl =
   "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
@@ -22,7 +22,7 @@ const rounded = (num) => {
   }
 };
 
-const MapChart = ({ setTooltipContent }) => {
+const MapChart = () => {
   const dispatch = useDispatch();
   return (
     <>
@@ -36,19 +36,19 @@ const MapChart = ({ setTooltipContent }) => {
                   geography={geo}
                   onMouseEnter={() => {
                     const { NAME, POP_EST } = geo.properties;
-                    getCountry(NAME, dispatch);
-                    document.getElementById(NAME).scrollIntoView();
-                    dispatch(getTooltip(NAME));
-                    // document.getElementById(NAME).style.background =
-                    //   "yellow";
-                    // getCountry(NAME)
-                    // setTooltipContent(NAME)
-                  }}
-                  // onMouseLeave={() => {
-                  //   const { NAME, POP_EST } = geo.properties;
+                    let name =
+                      NAME === "United States of America" ? "USA" : NAME;
 
-                  //   document.getElementById(NAME).style.background = "white";
-                  // }}
+                    document.getElementById(name).scrollIntoView();
+                    dispatch(getTooltip(name));
+                  }}
+                  onClick={() => {
+                    const { NAME, POP_EST } = geo.properties;
+                    let name =
+                      NAME === "United States of America" ? "USA" : NAME;
+
+                    getCountry(name, dispatch);
+                  }}
                   style={{
                     default: {
                       fill: "#D6D6DA",

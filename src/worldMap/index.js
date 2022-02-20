@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import ReactTooltip from "react-tooltip";
 
@@ -10,7 +10,7 @@ function WorldMap() {
   return (
     <>
       <MapChart/>
-      <ReactTooltip>{`${tooltip} - ${data.cases}`}</ReactTooltip>
+      <ReactTooltip>{`${tooltip}`}</ReactTooltip>
     </>
   );
 }
