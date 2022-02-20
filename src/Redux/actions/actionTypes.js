@@ -1,5 +1,5 @@
 export const SINGLE = 'single'
 export const ALL = 'all'
 export const TOOLTIP = 'tooltip'
-export const SINGLE_V = 'vaccine'
+export const SINGLE_V = 'vaccineS'
 export const ALL_V = 'vaccine'

@@ -6,7 +6,7 @@ import {
   Geographies,
   Geography,
 } from "react-simple-maps";
-import { getCountry } from "../api/http";
+import { getCountry, getSingleVaccinated } from "../api/http";
 import { getTooltip } from "../Redux/actions/actions";
 
 const geoUrl =
@@ -48,6 +48,7 @@ const MapChart = () => {
                       NAME === "United States of America" ? "USA" : NAME;
 
                     getCountry(name, dispatch);
+                    getSingleVaccinated(name, dispatch)
                   }}
                   style={{
                     default: {

@@ -31,7 +31,7 @@ export default function reducer(state = initial, action) {
   if (action.type === types.SINGLE_V)
     return {
       ...state,
-      singleV: action.payload.allV,
+      singleV: action.payload.singleV,
       isLoading: action.payload.isLoading,
     };
 
