@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, {useEffect, memo } from "react";
 import { useDispatch } from "react-redux";
 import {
   ZoomableGroup,
@@ -24,6 +24,11 @@ const rounded = (num) => {
 
 const MapChart = () => {
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    getCountry("uzbekistan", dispatch);
+    getSingleVaccinated('uzbekistan', dispatch)
+  },[])
   return (
     <>
       <ComposableMap data-tip="" projectionConfig={{ scale: 200 }}>
