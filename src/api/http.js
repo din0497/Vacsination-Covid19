@@ -7,6 +7,7 @@ const baseURL = "https://disease.sh/v3/covid-19";
 export const getCountry = async (base, dispatch) => {
   let res;
   dispatch(fetchData({},true))
+  console.log('loading......')
   try {
     res = await axios.get(`${baseURL}/countries/${base}`);
     dispatch(fetchData(res.data, false))
@@ -14,6 +15,7 @@ export const getCountry = async (base, dispatch) => {
     console.log(err.response.data);
     alert(res.data.msg);
   }
+  console.log('loading..done')
 };
 
 export const getAll = async (dispatch) => {
