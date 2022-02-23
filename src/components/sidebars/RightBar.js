@@ -1,9 +1,11 @@
+import React from "react";
 import { Info, Flag, RightContainer, Wrapper } from "../styles/rightStyles";
 import FadeLoader from "react-spinners/FadeLoader";
 
 import Cases from "./Case/Cases";
 import { useSelector } from "react-redux";
 import Spinner from "../../Ui/Spinner/Spinner";
+import Line from "../Line";
 
 const RightBar = () => {
   const data = useSelector((state) => state);
@@ -34,6 +36,7 @@ const RightBar = () => {
               number={data.data.recovered}
             />
             <Cases text="Deaths" color="black" number={data.data.deaths} />
+            <Line />
           </Wrapper>
         </>
       )}
