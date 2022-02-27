@@ -2,7 +2,7 @@ import { Container, Text, Number } from "../../styles";
 
 const Cases = (props) => {
   return (
-    <Container color={props.color}>
+    <Container>
       <Text>
         {props.text}
       </Text>
