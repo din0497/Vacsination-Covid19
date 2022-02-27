@@ -12,15 +12,15 @@ import { getTooltip } from "../Redux/actions/actions";
 const geoUrl =
   "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
 
-const rounded = (num) => {
-  if (num > 1000000000) {
-    return Math.round(num / 100000000) / 10 + "Bn";
-  } else if (num > 1000000) {
-    return Math.round(num / 100000) / 10 + "M";
-  } else {
-    return Math.round(num / 100) / 10 + "K";
-  }
-};
+// const rounded = (num) => {
+//   if (num > 1000000000) {
+//     return Math.round(num / 100000000) / 10 + "Bn";
+//   } else if (num > 1000000) {
+//     return Math.round(num / 100000) / 10 + "M";
+//   } else {
+//     return Math.round(num / 100) / 10 + "K";
+//   }
+// };
 
 const MapChart = () => {
   const dispatch = useDispatch();
@@ -28,7 +28,7 @@ const MapChart = () => {
   useEffect(() => {
     getCountry("uzbekistan", dispatch);
     getSingleVaccinated('uzbekistan', dispatch)
-  },[])
+  },[dispatch])
   return (
     <>
       <ComposableMap data-tip="" projectionConfig={{ scale: 200 }}>
@@ -40,7 +40,7 @@ const MapChart = () => {
                   key={geo.rsmKey}
                   geography={geo}
                   onMouseEnter={() => {
-                    const { NAME, POP_EST } = geo.properties;
+                    const { NAME } = geo.properties;
                     let name =
                       NAME === "United States of America" ? "USA" : NAME;
 
@@ -48,7 +48,7 @@ const MapChart = () => {
                     dispatch(getTooltip(name));
                   }}
                   onClick={() => {
-                    const { NAME, POP_EST } = geo.properties;
+                    const { NAME } = geo.properties;
                     let name =
                       NAME === "United States of America" ? "USA" : NAME;
 
